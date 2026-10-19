@@ -2,8 +2,8 @@
 # frozen_string_literal: true
 
 # Usage:
-#   ruby collect.rb                          # collect all TARGETS not yet collected
-#   ruby collect.rb redis-7.4.11 valkey-9.0.6  # (re)collect the given versions
+#   ruby collect.rb                             # collect every released version of SERIES not yet collected
+#   ruby collect.rb redis-7.4.0 valkey-9.0.0    # (re)collect the given versions
 
 require 'fileutils'
 require 'json'
@@ -11,14 +11,14 @@ require 'net/http'
 require 'open3'
 require 'socket'
 
-TARGETS = {
-  'redis' => %w[3.2.12 4.0.14 5.0.14 6.0.20 6.2.24 7.0.15 7.2.16 7.4.11 8.0.6 8.2.10 8.4.7 8.6.7 8.8.3 8.10.2],
-  'valkey' => %w[7.2.14 8.0.11 8.1.10 9.0.6 9.1.2],
+SERIES = {
+  'redis' => %w[3.2 4.0 5.0 6.0 6.2 7.0 7.2 7.4 8.0 8.2 8.4 8.6 8.8 8.10],
+  'valkey' => %w[7.2 8.0 8.1 9.0 9.1],
 }
 
 PRODUCTS = {
-  'redis' => { image: 'redis', server: 'redis-server', repo: 'redis/redis', confs: %w[redis.conf redis-full.conf] },
-  'valkey' => { image: 'valkey/valkey', server: 'valkey-server', repo: 'valkey-io/valkey', confs: %w[valkey.conf redis.conf] },
+  'redis' => { image: 'redis', server: 'redis-server', cli: 'redis-cli', repo: 'redis/redis', confs: %w[redis.conf redis-full.conf] },
+  'valkey' => { image: 'valkey/valkey', server: 'valkey-server', cli: 'valkey-cli', repo: 'valkey-io/valkey', confs: %w[valkey.conf redis.conf] },
 }
 
 MODULES_DIR = '/usr/local/lib/redis/modules'
@@ -57,11 +57,40 @@ def docker(*args)
   out
 end
 
-def connect(port)
+def registry_tags(image)
+  repo = image.include?('/') ? image : "library/#{image}"
+  token = JSON.parse(Net::HTTP.get(URI("https://auth.docker.io/token?service=registry.docker.io&scope=repository:#{repo}:pull")))['token']
+  tags = []
+  path = "/v2/#{repo}/tags/list?n=1000"
+  while path
+    uri = URI("https://registry-1.docker.io#{path}")
+    req = Net::HTTP::Get.new(uri)
+    req['Authorization'] = "Bearer #{token}"
+    res = Net::HTTP.start(uri.host, uri.port, use_ssl: true) { it.request(req) }
+    raise "listing tags of #{repo} failed: #{res.code}" unless res.is_a?(Net::HTTPSuccess)
+
+    tags.concat(JSON.parse(res.body)['tags'])
+    path = res['link']&.[](/<([^>]+)>/, 1)
+  end
+  tags
+end
+
+def released_versions(product, series)
+  tags = registry_tags(PRODUCTS.fetch(product)[:image])
+  series.flat_map { |s| tags.grep(/\A#{Regexp.escape(s)}\.\d+\z/) }.sort_by { Gem::Version.new(it) }
+end
+
+def connect(id, port, cli)
   60.times do
     sock = TCPSocket.new('127.0.0.1', port)
     return sock if RESP.call(sock, 'PING') == 'PONG'
-  rescue SystemCallError, EOFError, RuntimeError
+  rescue RuntimeError => e
+    sock&.close
+    # Old images such as redis:3.2.0 predate the protected-mode patch. Turn it off over loopback instead of with
+    # --protected-mode, because Redis 3.2 drops its default save points when any option is given on the command line.
+    docker('exec', id, cli, 'config', 'set', 'protected-mode', 'no') if e.message.start_with?('DENIED')
+    sleep 0.5
+  rescue SystemCallError, EOFError
     sock&.close
     sleep 0.5
   end
@@ -72,11 +101,18 @@ def with_server(product, version, args = [])
   spec = PRODUCTS.fetch(product)
   id = docker('run', '-d', '-p', '127.0.0.1::6379', '--entrypoint', spec[:server], "#{spec[:image]}:#{version}", *args).strip
   port = docker('port', id, '6379/tcp').lines.first.split(':').last.to_i
-  sock = connect(port)
+  sock = connect(id, port, spec[:cli])
   yield sock, id
 ensure
   sock&.close
   docker('rm', '-f', id) if id
+end
+
+# Images are only needed to read the defaults, and keeping every patch release would fill up the Docker disk.
+def remove_image(product, version)
+  docker('rmi', "#{PRODUCTS.fetch(product)[:image]}:#{version}")
+rescue RuntimeError
+  nil
 end
 
 def config_get_all(sock, protected_mode)
@@ -175,9 +211,18 @@ def collect(product, version)
   File.write(File.join(dir, 'config.json'), JSON.pretty_generate(result) + "\n")
 end
 
+def series_of(config)
+  [config['product'], config['version'].split('.')[0, 2].join('.')]
+end
+
+# Group patch releases by series, ordering series by their first release, so that the list stays readable as patches pile up.
 def write_versions
   entries = Dir.glob(File.join(JSON_DIR, '*', 'config.json')).map { JSON.parse(File.read(it)) }
-  entries.sort_by! { [it['released_at'], Gem::Version.new(it['version'])] }.reverse!
+  first_release = entries.group_by { series_of(it) }.transform_values { |list| list.map { it['released_at'] }.min }
+  entries.sort_by! {
+    product, series = series_of(it)
+    [first_release[[product, series]], product, Gem::Version.new(series), it['released_at'], Gem::Version.new(it['version'])]
+  }.reverse!
   versions = entries.map {
     {
       'id' => "#{it['product']}-#{it['version']}",
@@ -190,11 +235,20 @@ end
 
 targets =
   if ARGV.empty?
-    TARGETS.flat_map { |product, versions| versions.map { [product, it] } }
-           .reject { |product, version| File.exist?(File.join(JSON_DIR, "#{product}-#{version}", 'config.json')) }
+    SERIES.flat_map { |product, series| released_versions(product, series).map { [product, it] } }
+          .reject { |product, version| File.exist?(File.join(JSON_DIR, "#{product}-#{version}", 'config.json')) }
   else
     ARGV.map { it.split('-', 2) }
   end
 
-targets.each { |product, version| collect(product, version) }
+failures = targets.filter_map do |product, version|
+  collect(product, version)
+  nil
+rescue => e
+  warn "failed to collect #{product}-#{version}: #{e.message}"
+  "#{product}-#{version}"
+ensure
+  remove_image(product, version)
+end
 write_versions
+abort "failed: #{failures.join(' ')}" unless failures.empty?

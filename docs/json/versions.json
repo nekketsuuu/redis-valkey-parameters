@@ -5,23 +5,33 @@
     "modules": true
   },
   {
+    "id": "redis-8.10.1",
+    "released_at": "2026-08-17",
+    "modules": true
+  },
+  {
+    "id": "redis-8.10.0",
+    "released_at": "2026-07-29",
+    "modules": true
+  },
+  {
     "id": "redis-8.8.3",
     "released_at": "2026-09-17",
     "modules": true
   },
   {
-    "id": "redis-8.6.7",
-    "released_at": "2026-09-17",
+    "id": "redis-8.8.2",
+    "released_at": "2026-08-17",
     "modules": true
   },
   {
-    "id": "redis-8.4.7",
-    "released_at": "2026-09-17",
+    "id": "redis-8.8.1",
+    "released_at": "2026-07-23",
     "modules": true
   },
   {
-    "id": "redis-8.2.10",
-    "released_at": "2026-09-17",
+    "id": "redis-8.8.0",
+    "released_at": "2026-05-25",
     "modules": true
   },
   {
@@ -30,13 +40,273 @@
     "modules": false
   },
   {
+    "id": "valkey-9.1.1",
+    "released_at": "2026-07-21",
+    "modules": false
+  },
+  {
+    "id": "valkey-9.1.0",
+    "released_at": "2026-05-19",
+    "modules": false
+  },
+  {
+    "id": "redis-8.6.7",
+    "released_at": "2026-09-17",
+    "modules": true
+  },
+  {
+    "id": "redis-8.6.6",
+    "released_at": "2026-08-17",
+    "modules": true
+  },
+  {
+    "id": "redis-8.6.5",
+    "released_at": "2026-07-23",
+    "modules": true
+  },
+  {
+    "id": "redis-8.6.4",
+    "released_at": "2026-06-04",
+    "modules": true
+  },
+  {
+    "id": "redis-8.6.3",
+    "released_at": "2026-05-05",
+    "modules": true
+  },
+  {
+    "id": "redis-8.6.2",
+    "released_at": "2026-03-24",
+    "modules": true
+  },
+  {
+    "id": "redis-8.6.1",
+    "released_at": "2026-02-23",
+    "modules": true
+  },
+  {
+    "id": "redis-8.6.0",
+    "released_at": "2026-02-10",
+    "modules": true
+  },
+  {
+    "id": "redis-8.4.7",
+    "released_at": "2026-09-17",
+    "modules": true
+  },
+  {
+    "id": "redis-8.4.6",
+    "released_at": "2026-08-17",
+    "modules": true
+  },
+  {
+    "id": "redis-8.4.5",
+    "released_at": "2026-07-23",
+    "modules": true
+  },
+  {
+    "id": "redis-8.4.4",
+    "released_at": "2026-06-04",
+    "modules": true
+  },
+  {
+    "id": "redis-8.4.3",
+    "released_at": "2026-05-05",
+    "modules": true
+  },
+  {
+    "id": "redis-8.4.2",
+    "released_at": "2026-02-23",
+    "modules": true
+  },
+  {
+    "id": "redis-8.4.1",
+    "released_at": "2026-02-08",
+    "modules": true
+  },
+  {
+    "id": "redis-8.4.0",
+    "released_at": "2025-11-18",
+    "modules": true
+  },
+  {
     "id": "valkey-9.0.6",
     "released_at": "2026-09-01",
     "modules": false
   },
   {
+    "id": "valkey-9.0.5",
+    "released_at": "2026-07-21",
+    "modules": false
+  },
+  {
+    "id": "valkey-9.0.4",
+    "released_at": "2026-05-06",
+    "modules": false
+  },
+  {
+    "id": "valkey-9.0.3",
+    "released_at": "2026-02-24",
+    "modules": false
+  },
+  {
+    "id": "valkey-9.0.2",
+    "released_at": "2026-02-03",
+    "modules": false
+  },
+  {
+    "id": "valkey-9.0.1",
+    "released_at": "2025-12-09",
+    "modules": false
+  },
+  {
+    "id": "valkey-9.0.0",
+    "released_at": "2025-10-21",
+    "modules": false
+  },
+  {
+    "id": "redis-8.2.10",
+    "released_at": "2026-09-17",
+    "modules": true
+  },
+  {
+    "id": "redis-8.2.9",
+    "released_at": "2026-08-17",
+    "modules": true
+  },
+  {
+    "id": "redis-8.2.8",
+    "released_at": "2026-07-23",
+    "modules": true
+  },
+  {
+    "id": "redis-8.2.7",
+    "released_at": "2026-06-04",
+    "modules": true
+  },
+  {
+    "id": "redis-8.2.6",
+    "released_at": "2026-05-05",
+    "modules": true
+  },
+  {
+    "id": "redis-8.2.5",
+    "released_at": "2026-02-23",
+    "modules": true
+  },
+  {
+    "id": "redis-8.2.4",
+    "released_at": "2026-02-08",
+    "modules": true
+  },
+  {
+    "id": "redis-8.2.3",
+    "released_at": "2025-11-02",
+    "modules": true
+  },
+  {
+    "id": "redis-8.2.2",
+    "released_at": "2025-10-03",
+    "modules": true
+  },
+  {
+    "id": "redis-8.2.1",
+    "released_at": "2025-08-18",
+    "modules": true
+  },
+  {
+    "id": "redis-8.2.0",
+    "released_at": "2025-08-04",
+    "modules": true
+  },
+  {
+    "id": "redis-8.0.6",
+    "released_at": "2026-02-23",
+    "modules": true
+  },
+  {
+    "id": "redis-8.0.5",
+    "released_at": "2025-11-02",
+    "modules": true
+  },
+  {
+    "id": "redis-8.0.4",
+    "released_at": "2025-10-03",
+    "modules": true
+  },
+  {
+    "id": "redis-8.0.3",
+    "released_at": "2025-07-06",
+    "modules": true
+  },
+  {
+    "id": "redis-8.0.2",
+    "released_at": "2025-05-27",
+    "modules": true
+  },
+  {
+    "id": "redis-8.0.1",
+    "released_at": "2025-05-13",
+    "modules": true
+  },
+  {
+    "id": "redis-8.0.0",
+    "released_at": "2025-05-02",
+    "modules": true
+  },
+  {
     "id": "valkey-8.1.10",
     "released_at": "2026-08-31",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.1.9",
+    "released_at": "2026-07-21",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.1.8",
+    "released_at": "2026-06-02",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.1.7",
+    "released_at": "2026-05-06",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.1.6",
+    "released_at": "2026-02-24",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.1.5",
+    "released_at": "2025-12-04",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.1.4",
+    "released_at": "2025-10-03",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.1.3",
+    "released_at": "2025-07-07",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.1.2",
+    "released_at": "2025-06-11",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.1.1",
+    "released_at": "2025-04-23",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.1.0",
+    "released_at": "2025-03-31",
     "modules": false
   },
   {
@@ -45,18 +315,113 @@
     "modules": false
   },
   {
+    "id": "valkey-8.0.10",
+    "released_at": "2026-07-21",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.0.9",
+    "released_at": "2026-05-06",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.0.7",
+    "released_at": "2026-02-24",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.0.6",
+    "released_at": "2025-10-03",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.0.5",
+    "released_at": "2025-08-22",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.0.4",
+    "released_at": "2025-07-07",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.0.3",
+    "released_at": "2025-04-23",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.0.2",
+    "released_at": "2025-01-07",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.0.1",
+    "released_at": "2024-10-02",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.0.0",
+    "released_at": "2024-09-15",
+    "modules": false
+  },
+  {
     "id": "redis-7.4.11",
     "released_at": "2026-08-17",
     "modules": false
   },
   {
-    "id": "redis-7.2.16",
-    "released_at": "2026-08-17",
+    "id": "redis-7.4.10",
+    "released_at": "2026-07-23",
     "modules": false
   },
   {
-    "id": "redis-6.2.24",
-    "released_at": "2026-08-17",
+    "id": "redis-7.4.9",
+    "released_at": "2026-05-05",
+    "modules": false
+  },
+  {
+    "id": "redis-7.4.8",
+    "released_at": "2026-02-23",
+    "modules": false
+  },
+  {
+    "id": "redis-7.4.7",
+    "released_at": "2025-11-02",
+    "modules": false
+  },
+  {
+    "id": "redis-7.4.6",
+    "released_at": "2025-10-03",
+    "modules": false
+  },
+  {
+    "id": "redis-7.4.5",
+    "released_at": "2025-07-06",
+    "modules": false
+  },
+  {
+    "id": "redis-7.4.4",
+    "released_at": "2025-05-27",
+    "modules": false
+  },
+  {
+    "id": "redis-7.4.3",
+    "released_at": "2025-04-23",
+    "modules": false
+  },
+  {
+    "id": "redis-7.4.2",
+    "released_at": "2025-01-06",
+    "modules": false
+  },
+  {
+    "id": "redis-7.4.1",
+    "released_at": "2024-10-02",
+    "modules": false
+  },
+  {
+    "id": "redis-7.4.0",
+    "released_at": "2024-07-29",
     "modules": false
   },
   {
@@ -65,13 +430,328 @@
     "modules": false
   },
   {
-    "id": "redis-8.0.6",
+    "id": "valkey-7.2.13",
+    "released_at": "2026-05-06",
+    "modules": false
+  },
+  {
+    "id": "valkey-7.2.12",
+    "released_at": "2026-02-24",
+    "modules": false
+  },
+  {
+    "id": "valkey-7.2.11",
+    "released_at": "2025-10-03",
+    "modules": false
+  },
+  {
+    "id": "valkey-7.2.10",
+    "released_at": "2025-07-07",
+    "modules": false
+  },
+  {
+    "id": "valkey-7.2.9",
+    "released_at": "2025-04-23",
+    "modules": false
+  },
+  {
+    "id": "valkey-7.2.8",
+    "released_at": "2025-01-08",
+    "modules": false
+  },
+  {
+    "id": "valkey-7.2.7",
+    "released_at": "2024-10-02",
+    "modules": false
+  },
+  {
+    "id": "valkey-7.2.6",
+    "released_at": "2024-07-31",
+    "modules": false
+  },
+  {
+    "id": "valkey-7.2.5",
+    "released_at": "2024-04-16",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.16",
+    "released_at": "2026-08-17",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.15",
+    "released_at": "2026-07-23",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.14",
+    "released_at": "2026-05-05",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.13",
     "released_at": "2026-02-23",
-    "modules": true
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.12",
+    "released_at": "2025-11-02",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.11",
+    "released_at": "2025-10-03",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.10",
+    "released_at": "2025-07-06",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.9",
+    "released_at": "2025-05-27",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.8",
+    "released_at": "2025-04-23",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.7",
+    "released_at": "2025-01-06",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.6",
+    "released_at": "2024-10-02",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.5",
+    "released_at": "2024-05-19",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.4",
+    "released_at": "2024-01-09",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.3",
+    "released_at": "2023-11-01",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.2",
+    "released_at": "2023-10-18",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.1",
+    "released_at": "2023-09-06",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.0",
+    "released_at": "2023-08-15",
+    "modules": false
   },
   {
     "id": "redis-7.0.15",
     "released_at": "2024-01-09",
+    "modules": false
+  },
+  {
+    "id": "redis-7.0.14",
+    "released_at": "2023-10-18",
+    "modules": false
+  },
+  {
+    "id": "redis-7.0.13",
+    "released_at": "2023-09-06",
+    "modules": false
+  },
+  {
+    "id": "redis-7.0.12",
+    "released_at": "2023-07-10",
+    "modules": false
+  },
+  {
+    "id": "redis-7.0.11",
+    "released_at": "2023-04-17",
+    "modules": false
+  },
+  {
+    "id": "redis-7.0.10",
+    "released_at": "2023-03-20",
+    "modules": false
+  },
+  {
+    "id": "redis-7.0.9",
+    "released_at": "2023-02-28",
+    "modules": false
+  },
+  {
+    "id": "redis-7.0.8",
+    "released_at": "2023-01-16",
+    "modules": false
+  },
+  {
+    "id": "redis-7.0.7",
+    "released_at": "2022-12-16",
+    "modules": false
+  },
+  {
+    "id": "redis-7.0.6",
+    "released_at": "2022-12-12",
+    "modules": false
+  },
+  {
+    "id": "redis-7.0.5",
+    "released_at": "2022-09-21",
+    "modules": false
+  },
+  {
+    "id": "redis-7.0.4",
+    "released_at": "2022-07-18",
+    "modules": false
+  },
+  {
+    "id": "redis-7.0.3",
+    "released_at": "2022-07-11",
+    "modules": false
+  },
+  {
+    "id": "redis-7.0.2",
+    "released_at": "2022-06-12",
+    "modules": false
+  },
+  {
+    "id": "redis-7.0.1",
+    "released_at": "2022-06-08",
+    "modules": false
+  },
+  {
+    "id": "redis-7.0.0",
+    "released_at": "2022-04-27",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.24",
+    "released_at": "2026-08-17",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.23",
+    "released_at": "2026-07-23",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.22",
+    "released_at": "2026-05-05",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.21",
+    "released_at": "2025-11-02",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.20",
+    "released_at": "2025-10-03",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.19",
+    "released_at": "2025-07-06",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.18",
+    "released_at": "2025-04-23",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.17",
+    "released_at": "2025-01-06",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.16",
+    "released_at": "2024-10-02",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.14",
+    "released_at": "2023-10-18",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.13",
+    "released_at": "2023-07-10",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.12",
+    "released_at": "2023-04-17",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.11",
+    "released_at": "2023-02-28",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.10",
+    "released_at": "2023-01-17",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.8",
+    "released_at": "2022-12-12",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.7",
+    "released_at": "2022-04-27",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.6",
+    "released_at": "2021-10-04",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.5",
+    "released_at": "2021-07-21",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.4",
+    "released_at": "2021-06-01",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.3",
+    "released_at": "2021-05-03",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.2",
+    "released_at": "2021-04-20",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.1",
+    "released_at": "2021-03-02",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.0",
+    "released_at": "2021-02-22",
     "modules": false
   },
   {
@@ -80,8 +760,178 @@
     "modules": false
   },
   {
+    "id": "redis-6.0.19",
+    "released_at": "2023-04-17",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.18",
+    "released_at": "2023-02-28",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.17",
+    "released_at": "2023-01-17",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.16",
+    "released_at": "2021-10-04",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.15",
+    "released_at": "2021-07-21",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.14",
+    "released_at": "2021-06-01",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.13",
+    "released_at": "2021-05-03",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.12",
+    "released_at": "2021-03-02",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.11",
+    "released_at": "2021-02-22",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.10",
+    "released_at": "2021-01-12",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.9",
+    "released_at": "2020-10-27",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.8",
+    "released_at": "2020-09-10",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.7",
+    "released_at": "2020-09-01",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.6",
+    "released_at": "2020-07-20",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.5",
+    "released_at": "2020-06-09",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.4",
+    "released_at": "2020-05-28",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.3",
+    "released_at": "2020-05-16",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.2",
+    "released_at": "2020-05-15",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.1",
+    "released_at": "2020-05-01",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.0",
+    "released_at": "2020-04-30",
+    "modules": false
+  },
+  {
     "id": "redis-5.0.14",
     "released_at": "2021-10-04",
+    "modules": false
+  },
+  {
+    "id": "redis-5.0.13",
+    "released_at": "2021-07-21",
+    "modules": false
+  },
+  {
+    "id": "redis-5.0.12",
+    "released_at": "2021-03-02",
+    "modules": false
+  },
+  {
+    "id": "redis-5.0.11",
+    "released_at": "2021-02-22",
+    "modules": false
+  },
+  {
+    "id": "redis-5.0.10",
+    "released_at": "2020-10-27",
+    "modules": false
+  },
+  {
+    "id": "redis-5.0.9",
+    "released_at": "2020-04-17",
+    "modules": false
+  },
+  {
+    "id": "redis-5.0.8",
+    "released_at": "2020-03-12",
+    "modules": false
+  },
+  {
+    "id": "redis-5.0.7",
+    "released_at": "2019-11-19",
+    "modules": false
+  },
+  {
+    "id": "redis-5.0.6",
+    "released_at": "2019-09-25",
+    "modules": false
+  },
+  {
+    "id": "redis-5.0.5",
+    "released_at": "2019-05-15",
+    "modules": false
+  },
+  {
+    "id": "redis-5.0.4",
+    "released_at": "2019-03-18",
+    "modules": false
+  },
+  {
+    "id": "redis-5.0.3",
+    "released_at": "2018-12-12",
+    "modules": false
+  },
+  {
+    "id": "redis-5.0.2",
+    "released_at": "2018-11-22",
+    "modules": false
+  },
+  {
+    "id": "redis-5.0.1",
+    "released_at": "2018-11-07",
+    "modules": false
+  },
+  {
+    "id": "redis-5.0.0",
+    "released_at": "2018-10-17",
     "modules": false
   },
   {
@@ -90,8 +940,133 @@
     "modules": false
   },
   {
+    "id": "redis-4.0.13",
+    "released_at": "2019-02-20",
+    "modules": false
+  },
+  {
+    "id": "redis-4.0.12",
+    "released_at": "2018-12-11",
+    "modules": false
+  },
+  {
+    "id": "redis-4.0.11",
+    "released_at": "2018-08-03",
+    "modules": false
+  },
+  {
+    "id": "redis-4.0.10",
+    "released_at": "2018-06-13",
+    "modules": false
+  },
+  {
+    "id": "redis-4.0.9",
+    "released_at": "2018-03-26",
+    "modules": false
+  },
+  {
+    "id": "redis-4.0.8",
+    "released_at": "2018-02-02",
+    "modules": false
+  },
+  {
+    "id": "redis-4.0.7",
+    "released_at": "2018-01-24",
+    "modules": false
+  },
+  {
+    "id": "redis-4.0.6",
+    "released_at": "2017-12-04",
+    "modules": false
+  },
+  {
+    "id": "redis-4.0.5",
+    "released_at": "2017-12-01",
+    "modules": false
+  },
+  {
+    "id": "redis-4.0.4",
+    "released_at": "2017-11-30",
+    "modules": false
+  },
+  {
+    "id": "redis-4.0.2",
+    "released_at": "2017-09-21",
+    "modules": false
+  },
+  {
+    "id": "redis-4.0.1",
+    "released_at": "2017-07-24",
+    "modules": false
+  },
+  {
+    "id": "redis-4.0.0",
+    "released_at": "2017-07-14",
+    "modules": false
+  },
+  {
     "id": "redis-3.2.12",
     "released_at": "2018-06-13",
+    "modules": false
+  },
+  {
+    "id": "redis-3.2.11",
+    "released_at": "2017-09-21",
+    "modules": false
+  },
+  {
+    "id": "redis-3.2.10",
+    "released_at": "2017-07-28",
+    "modules": false
+  },
+  {
+    "id": "redis-3.2.9",
+    "released_at": "2017-05-17",
+    "modules": false
+  },
+  {
+    "id": "redis-3.2.8",
+    "released_at": "2017-02-12",
+    "modules": false
+  },
+  {
+    "id": "redis-3.2.7",
+    "released_at": "2017-01-31",
+    "modules": false
+  },
+  {
+    "id": "redis-3.2.6",
+    "released_at": "2016-12-06",
+    "modules": false
+  },
+  {
+    "id": "redis-3.2.5",
+    "released_at": "2016-10-26",
+    "modules": false
+  },
+  {
+    "id": "redis-3.2.4",
+    "released_at": "2016-09-26",
+    "modules": false
+  },
+  {
+    "id": "redis-3.2.3",
+    "released_at": "2016-08-02",
+    "modules": false
+  },
+  {
+    "id": "redis-3.2.2",
+    "released_at": "2016-07-28",
+    "modules": false
+  },
+  {
+    "id": "redis-3.2.1",
+    "released_at": "2016-06-17",
+    "modules": false
+  },
+  {
+    "id": "redis-3.2.0",
+    "released_at": "2016-05-06",
     "modules": false
   }
 ]
