@@ -1,0 +1,97 @@
+[
+  {
+    "id": "redis-8.10.2",
+    "released_at": "2026-09-17",
+    "modules": true
+  },
+  {
+    "id": "redis-8.8.3",
+    "released_at": "2026-09-17",
+    "modules": true
+  },
+  {
+    "id": "redis-8.6.7",
+    "released_at": "2026-09-17",
+    "modules": true
+  },
+  {
+    "id": "redis-8.4.7",
+    "released_at": "2026-09-17",
+    "modules": true
+  },
+  {
+    "id": "redis-8.2.10",
+    "released_at": "2026-09-17",
+    "modules": true
+  },
+  {
+    "id": "valkey-9.1.2",
+    "released_at": "2026-09-01",
+    "modules": false
+  },
+  {
+    "id": "valkey-9.0.6",
+    "released_at": "2026-09-01",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.1.10",
+    "released_at": "2026-08-31",
+    "modules": false
+  },
+  {
+    "id": "valkey-8.0.11",
+    "released_at": "2026-08-31",
+    "modules": false
+  },
+  {
+    "id": "redis-7.4.11",
+    "released_at": "2026-08-17",
+    "modules": false
+  },
+  {
+    "id": "redis-7.2.16",
+    "released_at": "2026-08-17",
+    "modules": false
+  },
+  {
+    "id": "redis-6.2.24",
+    "released_at": "2026-08-17",
+    "modules": false
+  },
+  {
+    "id": "valkey-7.2.14",
+    "released_at": "2026-07-21",
+    "modules": false
+  },
+  {
+    "id": "redis-8.0.6",
+    "released_at": "2026-02-23",
+    "modules": true
+  },
+  {
+    "id": "redis-7.0.15",
+    "released_at": "2024-01-09",
+    "modules": false
+  },
+  {
+    "id": "redis-6.0.20",
+    "released_at": "2023-07-10",
+    "modules": false
+  },
+  {
+    "id": "redis-5.0.14",
+    "released_at": "2021-10-04",
+    "modules": false
+  },
+  {
+    "id": "redis-4.0.14",
+    "released_at": "2019-03-18",
+    "modules": false
+  },
+  {
+    "id": "redis-3.2.12",
+    "released_at": "2018-06-13",
+    "modules": false
+  }
+]

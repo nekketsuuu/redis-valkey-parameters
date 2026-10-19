@@ -1,0 +1,93 @@
+div {
+    margin: 10px;
+}
+label {
+    display: inline-block;
+}
+table {
+    border-collapse: collapse;
+    border: solid 1px #808080;
+}
+.only-diff tr.same-value {
+    display: none;
+}
+th {
+    border: solid 1px #808080;
+    padding: 2px 4px;
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+}
+td {
+    padding: 2px;
+    border: solid 1px #808080;
+    font-family: monospace;
+}
+.difference {
+    background-color: #ffffa0;
+}
+.unexist {
+    background-color: #a0a0a0;
+}
+td .add {
+    background-color: #a0ffa0;
+}
+td .del {
+    background-color: #ffa0a0;
+}
+.parameter-name {
+    word-break: break-all;
+    min-width: 20ex;
+    a {
+        color: black;
+    }
+}
+.parameter-value {
+    word-break: break-all;
+    min-width: 10ex;
+    white-space: pre-wrap;
+    vertical-align: top;
+}
+input[type="search"] {
+    font-family: monospace;
+    width: 12em;
+}
+input.invalid-version {
+    background-color: #ff8080;
+}
+#footer {
+    font-size: 90%;
+    color: #606060;
+}
+#in-progress {
+    display: none;
+}
+#in-progress .background {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    opacity: 0.4;
+    z-index: 1;
+}
+#in-progress .spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 48px;
+    height: 48px;
+    margin: -24px 0 0 -24px;
+    border: solid 6px #ffffff;
+    border-top-color: #c00000;
+    border-radius: 50%;
+    animation: linear infinite rotation 1s;
+    z-index: 5;
+}
+@keyframes rotation {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
+}

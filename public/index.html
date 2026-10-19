@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Redis &amp; Valkey Parameters</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/app.js" defer></script>
+    </head>
+    <body>
+        <div id="in-progress">
+            <div class="background"></div>
+            <div class="spinner"></div>
+        </div>
+        <div id="header" hidden>
+            <h1>Redis &amp; Valkey Parameters</h1>
+            <div>
+                <span id="versions">Version: </span>
+                <label>
+                    <input type="checkbox" id="only_difference">
+                    Difference only
+                </label>
+                <label>
+                    <input type="checkbox" id="include_modules">
+                    Include modules
+                </label>
+            </div>
+        </div>
+        <div id="params"></div>
+        <div id="footer" hidden>
+            Notes:
+            <ul>
+                <li>
+                    Values are the output of <code>CONFIG GET *</code> on servers started without a configuration file from the official Docker images
+                    (<a href="https://hub.docker.com/_/redis">redis</a>, <a href="https://hub.docker.com/r/valkey/valkey">valkey/valkey</a>).
+                </li>
+                <li><code>protected-mode</code>: The official images patch the default to <code>no</code> at build time, but the default defined in the upstream source code (<code>yes</code>) is displayed instead.</li>
+                <li><code>dir</code>: The working directory of the images, <code>/data</code>, is stored as is.</li>
+                <li>Aliases: Since Redis 7, <code>CONFIG GET *</code> also returns aliases such as <code>slave-*</code> and <code>*-ziplist-*</code>, and they are shown in the table as is.</li>
+            </ul>
+        </div>
+    </body>
+</html>
