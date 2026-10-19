@@ -22,7 +22,7 @@ PRODUCTS = {
 }
 
 MODULES_DIR = '/usr/local/lib/redis/modules'
-JSON_DIR = File.join(__dir__, 'public', 'json')
+JSON_DIR = File.join(__dir__, 'docs', 'json')
 
 module RESP
   module_function
