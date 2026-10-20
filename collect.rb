@@ -23,6 +23,7 @@ PRODUCTS = {
 
 MODULES_DIR = '/usr/local/lib/redis/modules'
 JSON_DIR = File.join(__dir__, 'docs', 'json')
+INDEX_HTML = File.join(__dir__, 'docs', 'index.html')
 
 module RESP
   module_function
@@ -206,9 +207,24 @@ def collect(product, version)
   names = (result['base'].keys + result.fetch('with_modules', {}).keys).uniq
   result['docs'] = doc_links(product, version, names)
 
-  dir = File.join(JSON_DIR, "#{product}-#{version}")
-  FileUtils.mkdir_p(dir)
-  File.write(File.join(dir, 'config.json'), JSON.pretty_generate(result) + "\n")
+  write_if_changed(File.join(JSON_DIR, "#{product}-#{version}", 'config.json'), JSON.pretty_generate(result) + "\n")
+end
+
+def write_if_changed(path, content)
+  return false if File.exist?(path) && File.read(path) == content
+
+  FileUtils.mkdir_p(File.dirname(path))
+  File.write(path, content)
+  true
+end
+
+# Browsers cache JSON for a while, so the page requests it with this version, which changes only when the data does.
+def bump_data_version
+  pattern = /(<meta name="data-version" content=")[^"]*(">)/
+  html = File.read(INDEX_HTML)
+  raise "data-version is not found in #{INDEX_HTML}" unless html.match?(pattern)
+
+  File.write(INDEX_HTML, html.sub(pattern) { "#{$1}#{Time.now.utc.strftime('%Y%m%dT%H%M%SZ')}#{$2}" })
 end
 
 def series_of(config)
@@ -230,7 +246,7 @@ def write_versions
       'modules' => it.key?('with_modules'),
     }
   }
-  File.write(File.join(JSON_DIR, 'versions.json'), JSON.pretty_generate(versions) + "\n")
+  write_if_changed(File.join(JSON_DIR, 'versions.json'), JSON.pretty_generate(versions) + "\n")
 end
 
 targets =
@@ -241,8 +257,9 @@ targets =
     ARGV.map { it.split('-', 2) }
   end
 
+changed = false
 failures = targets.filter_map do |product, version|
-  collect(product, version)
+  changed |= collect(product, version)
   nil
 rescue => e
   warn "failed to collect #{product}-#{version}: #{e.message}"
@@ -250,5 +267,6 @@ rescue => e
 ensure
   remove_image(product, version)
 end
-write_versions
+changed |= write_versions
+bump_data_version if changed
 abort "failed: #{failures.join(' ')}" unless failures.empty?

@@ -6,6 +6,7 @@ class App
     @document = JS.document
     @query = @window[:URLSearchParams].new(@window[:location][:search])
     @table_only = @query.get('tableonly') == 'true'
+    @data_version = @document.querySelector('meta[name="data-version"]')[:content]
     @config_cache = {}
     @available_versions = []
     @rendering = false
@@ -24,8 +25,9 @@ class App
   end
 
   # JS::Object#fetch awaits each request in turn, so call the JS function directly to run requests in parallel.
+  # Only index.html is revalidated on reload, so the data version it carries keeps cached JSON from going stale.
   def request(path)
-    [path, @window[:fetch].call(path)]
+    [path, @window[:fetch].call("#{path}?v=#{@data_version}")]
   end
 
   def parse_json(request)
