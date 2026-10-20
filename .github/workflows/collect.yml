@@ -1,0 +1,69 @@
+name: Collect parameters
+
+on:
+  schedule:
+    - cron: '37 4 * * 2'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: collect-parameters
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  collect:
+    runs-on: ubuntu-26.04-arm
+    timeout-minutes: 60
+    env:
+      BRANCH_PREFIX: nekketsuuu-add-
+    steps:
+      - uses: actions/checkout@v7
+
+      # Wait for the open pull request to be merged instead of opening another one with overlapping versions.
+      - name: Check for an open pull request
+        id: open-pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          count=$(gh pr list --state open --json headRefName --jq "[.[] | select(.headRefName | startswith(\"$BRANCH_PREFIX\"))] | length")
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+
+      - uses: ruby/setup-ruby@v1
+        if: steps.open-pr.outputs.count == '0'
+        with:
+          ruby-version: ruby
+
+      - name: Collect new releases
+        if: steps.open-pr.outputs.count == '0'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: ruby collect.rb
+
+      - name: Open a pull request
+        if: steps.open-pr.outputs.count == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add docs
+          versions=$(git diff --cached --name-only -- 'docs/json/*/config.json' | cut -d/ -f3)
+          if [ -z "$versions" ]; then
+            echo 'No new releases.'
+            exit 0
+          fi
+
+          title="Add $(paste -sd ' ' - <<< "$versions")"
+          body="Added:"$'\n\n'"$(sed 's/^/- /' <<< "$versions")"
+          branch="$BRANCH_PREFIX$(date -u +%Y%m%dT%H%M%SZ)"
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -c "$branch"
+          git commit -m "$title"
+          git push origin "$branch"
+          gh pr create --base main --head "$branch" --title "$title" --body "$body"

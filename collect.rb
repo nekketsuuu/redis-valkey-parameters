@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 # Usage:
-#   ruby collect.rb                             # collect every released version of SERIES not yet collected
+#   ruby collect.rb                             # collect every release not yet collected, from the oldest collected one
 #   ruby collect.rb redis-7.4.0 valkey-9.0.0    # (re)collect the given versions
 
 require 'fileutils'
@@ -10,11 +10,6 @@ require 'json'
 require 'net/http'
 require 'open3'
 require 'socket'
-
-SERIES = {
-  'redis' => %w[3.2 4.0 5.0 6.0 6.2 7.0 7.2 7.4 8.0 8.2 8.4 8.6 8.8 8.10],
-  'valkey' => %w[7.2 8.0 8.1 9.0 9.1],
-}
 
 PRODUCTS = {
   'redis' => { image: 'redis', server: 'redis-server', cli: 'redis-cli', repo: 'redis/redis', confs: %w[redis.conf redis-full.conf] },
@@ -76,9 +71,15 @@ def registry_tags(image)
   tags
 end
 
-def released_versions(product, series)
-  tags = registry_tags(PRODUCTS.fetch(product)[:image])
-  series.flat_map { |s| tags.grep(/\A#{Regexp.escape(s)}\.\d+\z/) }.sort_by { Gem::Version.new(it) }
+def collected_versions(product)
+  Dir.glob(File.join(JSON_DIR, "#{product}-*", 'config.json')).map { Gem::Version.new(File.basename(File.dirname(it)).delete_prefix("#{product}-")) }
+end
+
+# Older releases than the collected ones are skipped, because e.g. Redis before 3.2 has no protected-mode to look up.
+def released_versions(product)
+  oldest = collected_versions(product).min
+  versions = registry_tags(PRODUCTS.fetch(product)[:image]).grep(/\A\d+\.\d+\.\d+\z/).map { Gem::Version.new(it) }
+  versions.select { oldest.nil? || it >= oldest }.sort.map(&:to_s)
 end
 
 def connect(id, port, cli)
@@ -251,8 +252,8 @@ end
 
 targets =
   if ARGV.empty?
-    SERIES.flat_map { |product, series| released_versions(product, series).map { [product, it] } }
-          .reject { |product, version| File.exist?(File.join(JSON_DIR, "#{product}-#{version}", 'config.json')) }
+    PRODUCTS.keys.flat_map { |product| released_versions(product).map { [product, it] } }
+            .reject { |product, version| File.exist?(File.join(JSON_DIR, "#{product}-#{version}", 'config.json')) }
   else
     ARGV.map { it.split('-', 2) }
   end
